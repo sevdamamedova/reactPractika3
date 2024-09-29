@@ -45,6 +45,11 @@ function App() {
 
   const totalPrice = products.reduce((total, product) => total + product.count * product.price, 0);
 
+  const handleReset = () => {
+    const resetCount = products.map((product) => ({ ...product, count: 0 }));
+    setProducts(resetCount);
+  };
+
   return (
     <>
       <Production products={products} countProducts={countProducts} />
@@ -52,6 +57,9 @@ function App() {
       <hr />
       <h3 style={{ color: "red" }}>Yekun mebleg</h3>
       <h2>{totalPrice}man</h2>
+      <button onClick={handleReset} style={{ width: "150px", fontSize: "20px" }}>
+        Sifirla
+      </button>
     </>
   );
 }
